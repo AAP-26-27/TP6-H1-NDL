@@ -306,15 +306,23 @@ if __name__ == "__main__":
 
     # Partie 2 : tests sur des listes python de jeux #################
 
-    #L = extraire_donnees("IGDB/jeux_consoles.csv", 10) # 10 éléments
+    L = extraire_donnees("IGDB/jeux_consoles.csv", 10) # 10 éléments
     #L = extraire_donnees("IGDB/jeux_consoles.csv") # toute la liste !
     #L = extraire_donnees("IGDB/jeux_toutes_plateformes.csv", 10) # 10 éléments
     #L = extraire_donnees("IGDB/jeux_toutes_plateformes.csv") # toute la liste !
 
-    #afficher_jeux_tabulaire(L)
+    afficher_jeux_tabulaire(L)
+    print("est trié ?", est_triee(L,comparer_id_jeu))
+    # TODO : Comment la liste est-elle triée au départ ? 
+    
+    ## Par id de jeu
 
-    # TODO : Comment la liste est-elle triée au départ ?
     # trier pour déterminer si le tri est stable
+
+    L_triee=tri_fusion(L, 0, len(L)-1,comparer_mois)
+    afficher_jeux_tabulaire(L)
+    print("est trié ?", est_triee(L,comparer_id_jeu))
+    print("est trié ?", est_triee(L,comparer_mois))
     # Quelle est la complexité pratique du tri des jeux ?
 
 
