@@ -251,11 +251,13 @@ class ListeChainee:
 
 def afficher_legende_simple(data) :
     """ TODO : Afficher “affichage par callback” """
-    pass
+    print ("affichage par callback")
 
+    
 def afficher_data_simple(indice,data): 
     """ TODO : Afficher ‘(indice) data ->’ """
-    pass
+    print (str(indice) str(data) ->)
+    
 
 def tests():
 
