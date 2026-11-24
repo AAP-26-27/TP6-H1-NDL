@@ -42,25 +42,35 @@ def comparer_generique(e1,e2,cle=None):
 
 def comparer_ids(e1,e2) :
     """ TODO: Comparer deux jeux à partir de leur champ id_jeu """ 
-
+    return e1["id_jeu"]-e2["id_jeu"]
 def comparer_annees(e1,e2) : 
     """ TODO: Comparer deux jeux à partir de leur champ annee """
-
+    return e1["annee"]-e2["annee"]
 def comparer_mois(e1,e2) : 
     """ TODO: Comparer deux jeux à partir de leur champ mois """
+    return e1["mois"]-e2["mois"]
 
 def comparer_noms(e1,e2) : 
     """ TODO: Comparer deux jeux à partir de leur champ nom_jeu """
     nom1 = e1["nom_jeu"].lower()
     nom2 = e2["nom_jeu"].lower()
+    if nom1 < nom2:
+        return -1
+    elif nom1 > nom2:
+        return 1
+    else:
+        return 0
     
 ################# TRI FUSION DE LISTES PYTHON ################# 
 
 def est_triee(L,fn_comparaison):
     """ TODO: renvoie True si L (liste python) est triée par ordre croissant du point de vue de la fonction de comparaison utilisée """
-    return False
+    for i in range (len(L)-1):
+        if fn_comparaison(L[i],L[i+1])>0:
+            return False
+    return True
         
-def tri_fusion(T, debut, fin,fn_comparaison): 
+def tri_fusion(T, debut, fin, fn_comparaison): 
     # TODO : rien à faire
 
     if (debut < fin) :
@@ -80,17 +90,21 @@ def fusionner(T, d, m, f,fn_comparaison):
     j = m - d + 1
     k = 0
     while i <= m - d and j <= f - d: 		# Fusion des deux parties triées
+        nb_comparaisons+=1
         if  fn_comparaison(aux[i],aux[j]) <= 0:		
             T[d + k] = aux[i]; i += 1		# aux[i] est plus petit : on le place dans t
         else:
             T[d + k] = aux[j] ; j += 1		# aux[j] est plus petit : on le place dans t
+        nb_affectations+=1
         k += 1
 
     while i <= m - d:					    # Recopie des éléments restants de la partie gauche
         T[d+k] = aux[i]; i += 1; k += 1
+        nb_affectations+=1
 
     while j <= f - d:					    # Recopie des éléments restants de la partie droite
         T[d+k] = aux[j]; j += 1; k += 1
+        nb_affectations+=1
 
 ################# TRI FUSION DE LISTES CHAINEES ################# 
 

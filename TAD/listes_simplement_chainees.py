@@ -256,7 +256,7 @@ def afficher_legende_simple(data) :
     
 def afficher_data_simple(indice,data): 
     """ TODO : Afficher ‘(indice) data ->’ """
-    print (str(indice) str(data) ->)
+    print (f"str(indice),str(data) ->")
     
 
 def tests():
